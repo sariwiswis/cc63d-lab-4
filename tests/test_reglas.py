@@ -17,7 +17,7 @@ def test_severidad_fuera_de_rango_se_rechaza(client):
 def test_severidad_valida_se_acepta(client):
     sid = crear_servicio(client)
     resp = client.post("/incidents", json={"title": "DB caída", "service_id": sid, "severity": 1})
-    assert resp.status_code == 201
+    assert resp.status_code == 200  # BREAK CI DEMO: debería ser 201
     assert "id" in resp.get_json()
 
 
